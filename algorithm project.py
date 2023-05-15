@@ -77,16 +77,17 @@ def printJobScheduling(arr, t):
 
 # Example2
 
-# In[17]:
 
 
 def find_max_profit(jobs) :
+    #the jobs are sorted in a descending order according to the profit to priorities the high profit jobs  
     jobs = sorted(jobs, key=lambda x : x[1])
-
+#intializing our schedule and max_profit 
     schedule = []
     max_profit = 0
 
     for job in jobs :
+        #making sure the job isn't our schedule yet and doesn't overlap with any othe job  
         if not schedule or job[0] >= schedule[-1][1] :
             schedule.append(job)
             max_profit += job[2]
@@ -98,7 +99,6 @@ max_profit = find_max_profit(jobs)
 print(max_profit)
 
 
-# In[ ]:
 
 
 
