@@ -34,47 +34,41 @@ print(result)
 #another solution:
 def printJobScheduling(arr, t):
  
-    n = len(arr)
- 
    
-    for i in range(n):
-        for j in range(n - 1 - i):
+    length = len(arr)
+ 
+    for i in range(length):
+        for j in range(length - 1 - i):
             if arr[j][2] < arr[j + 1][2]:
                 arr[j], arr[j + 1] = arr[j + 1], arr[j]
  
-    
+   
     result = [False] * t
  
-    job = ['-1'] * t
+   
+    jobs = ['-1'] * t
  
+    
     for i in range(len(arr)):
  
-        
+       
         for j in range(min(t - 1, arr[i][1] - 1), -1, -1):
  
             
             if result[j] is False:
                 result[j] = True
-                job[j] = arr[i][0]
+                jobs[j] = arr[i][0]
                 break
  
-    print(job)
+  
+    print(jobs)
+  if __name__ == '__main__':
+    arr = [('1',4,20),('2',1,10),('3',1,40),('4',1,30)]
  
- 
-
-if name == 'main':
-    arr = [['a', 2, 100],  # Job Array
-              ['b', 1, 19],
-              ['c', 2, 27],
-              ['d', 1, 25],
-              ['e', 3, 15]]
- 
- 
-    print("Following is maximum profit sequence of jobs")
+    print(" maximum profit sequence of jobs")
  
     
     printJobScheduling(arr, 3)
- 
 
 # Example2
 
