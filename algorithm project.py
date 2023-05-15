@@ -4,8 +4,9 @@
 # Example1
 
 # In[15]:
-
-
+#we have two ways to solve
+#first one
+   # Sort jobs by profit in descending order
 def Find_Maximum_profit(Jobs):
     Jobs = sorted(Jobs, key=lambda x: x[2], reverse=True)
     jobs_number = len(Jobs)
@@ -31,44 +32,48 @@ Jobs = [(1,4,20),(2,1,10),(3,1,40),(4,1,30)]
 result = Find_Maximum_profit(Jobs)
 print(result)
 
-#another solution:
+#second one:
+# arguments array and no of jobs to schedule
 def printJobScheduling(arr, t):
  
-   
+    # length of array
     length = len(arr)
- 
+  # Sort all jobs according to decreasing order of profit
     for i in range(length):
         for j in range(length - 1 - i):
             if arr[j][2] < arr[j + 1][2]:
                 arr[j], arr[j + 1] = arr[j + 1], arr[j]
  
-   
+   # To keep track of free time slots
     result = [False] * t
  
-   
+   # To store result (Sequence of jobs)
     jobs = ['-1'] * t
  
-    
+      # Iterate through all given jobs
     for i in range(len(arr)):
  
-       
+       # Find a free slot for this job (Note that we start from the last possible slot)
         for j in range(min(t - 1, arr[i][1] - 1), -1, -1):
  
-            
+             # Free slot found
             if result[j] is False:
                 result[j] = True
                 jobs[j] = arr[i][0]
                 break
  
-  
+  # print the sequence
     print(jobs)
+    # Driver's Code
   if __name__ == '__main__':
     arr = [('1',4,20),('2',1,10),('3',1,40),('4',1,30)]
  
     print(" maximum profit sequence of jobs")
- 
+ # Function Call
     
     printJobScheduling(arr, 3)
+    #Time Complexity: O(N2)
+    #Auxiliary Space: O(N)
 
 # Example2
 
